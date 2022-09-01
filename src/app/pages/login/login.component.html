@@ -1,1 +1,25 @@
-<p>login works!</p>
+<div class="c-login">
+  <div class="c-login__container">
+    <div class="c-login__container-icon">
+      <mat-icon class="purple">shopping_cart</mat-icon>
+    </div>
+    <h1 class="c-login__container-title">Invictus Market</h1>
+  </div>
+  <div class="c-login__content" [@openClose]="isOpen ? 'open' : 'void'">
+    <form class="c-login__form" [formGroup]="loginForm">
+      <div class="c-login__form-buttons" [@openClose]="isOpen ? 'fade' : 'void'">
+        <div class="c-login__form-buttons-join" (click)="goShop()">Continuar sem login</div>
+        <div class="c-login__form-buttons-login" (click)="showInput()">
+          Já possuo um login
+        </div>
+      </div>
+
+      <div class="c-login__form-input">
+        <!-- <mat-form-field>
+          <mat-label>CPF</mat-label>
+          <input matInput formControlName="documentNumber" />
+        </mat-form-field> -->
+      </div>
+    </form>
+  </div>
+</div>
