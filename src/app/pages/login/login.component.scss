@@ -2,31 +2,38 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-color: #751aff;
+  background-image: url(../../../assets/login-image.jpg);
+  background-size: cover;
   align-items: center;
+  
+  &__layer{
+    background-color: rgba( 0, 0, 0, 0.5 );
+  }
 
   &__container {
     display: flex;
     align-items: center;
+    justify-content: center;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    width: 100%;
 
     &-icon {
-      height: 72px;
-      width: 72px;
+      height: 120px;
+      width: 120px;
       border-radius: 50%;
       background-color: #fff;
-      margin-right: 24px;
+      margin-right: 72px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
     &-title {
-      font-size: 36px;
-      font-family: "Montserrat", sans-serif;
+      font-size: 50px;
+      font-family: "Ubuntu", sans-serif;
       font-weight: bold;
       color: #fff;
     }
@@ -40,7 +47,7 @@
     background: #fff;
     position: absolute;
     bottom: 0;
-    height: 120px;
+    height: 140px;
     border-top-left-radius: 24px;
     border-top-right-radius: 24px;
   }
@@ -57,19 +64,19 @@
 
       &-join,
       &-login {
-        font-size: 20px;
-        font-family: "Montserrat", sans-serif;
-        padding: 18px 24px;
-        border-radius: 12px;
+        font-size: 25px;
+        font-family: "Quicksand", sans-serif;
+        padding: 24px 42px;
+        border-radius: 18px;
         font-weight: bold;
       }
 
       &-join {
-        color: #751aff;
+        color: #C505FA;
       }
 
       &-login {
-        background-color: #751aff;
+        background-color: #C505FA;
         color: #fff;
       }
     }
@@ -77,8 +84,8 @@
 }
 
 .purple {
-  color: #751aff;
-  font-size: 42px;
+  color: #C505FA;
+  font-size: 50px;
   height: auto;
   width: auto;
 }
