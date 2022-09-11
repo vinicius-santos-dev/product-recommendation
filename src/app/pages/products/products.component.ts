@@ -6,7 +6,9 @@ import {
   trigger,
 } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { PaymentModalComponent } from 'src/app/components/payment-modal/payment-modal.component';
 
 @Component({
   selector: 'app-products',
@@ -45,9 +47,13 @@ export class ProductsComponent implements OnInit {
 
   public quantity = 1;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private matDialog: MatDialog) {}
 
   ngOnInit(): void {}
+
+  public openPaymentModal(): void {
+    this.matDialog.open(PaymentModalComponent);
+  }
 
   public goToPayment(): void {
     this.router.navigate(['payment']);

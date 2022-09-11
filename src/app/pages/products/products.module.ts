@@ -4,6 +4,7 @@ import { ProductsComponent } from './products.component';
 import { ProductsRoutingModule } from './products-routing.module';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [ProductsComponent],
@@ -12,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
     ProductsRoutingModule,
     MatTabsModule,
     MatIconModule,
+    MatDialogModule,
   ]
 })
 export class ProductsModule { }
