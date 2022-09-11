@@ -1,3 +1,10 @@
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -5,6 +12,16 @@ import { Router } from '@angular/router';
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
+  animations: [
+    trigger('showHide', [
+      state('show', style({ right: '0' })),
+      state('rotate', style({ transform: 'rotate(180deg)' })),
+      transition('void => show', [animate('0.3s ease-in-out')]),
+      transition('show => void', [animate('0.3s ease-in-out')]),
+      transition('void => rotate', [animate('0.3s ease-in-out')]),
+      transition('rotate => void', [animate('0.3s ease-in-out')]),
+    ]),
+  ],
 })
 export class ProductsComponent implements OnInit {
   public categories = [
@@ -24,6 +41,10 @@ export class ProductsComponent implements OnInit {
     { name: 'Abacaxi', price: 'R$ 7,00' },
   ];
 
+  public hasToShow = false;
+
+  public quantity = 1;
+
   constructor(private router: Router) {}
 
   ngOnInit(): void {}
@@ -31,4 +52,19 @@ export class ProductsComponent implements OnInit {
   public goToPayment(): void {
     this.router.navigate(['payment']);
   }
+
+  public showOrHide(): void {
+    this.hasToShow = !this.hasToShow;
+  }
+
+  public add(): void {
+    this.quantity++;
+  }
+
+  public subtract(): void {
+    if (this.quantity >= 1) {
+      this.quantity--;
+    }
+  }
+  
 }

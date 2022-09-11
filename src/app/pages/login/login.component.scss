@@ -45,24 +45,23 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
     background: #fff;
     position: absolute;
     bottom: 0;
-    height: 140px;
+    right: 0;
+    left: 0;
     border-top-left-radius: 24px;
     border-top-right-radius: 24px;
+    padding: 24px 48px;
   }
 
   &__form {
     width: 100%;
-    display: flex;
-    justify-content: center;
 
     &-buttons {
       display: flex;
-      width: 80%;
-      justify-content: space-around;
+      width: 100%;
+      justify-content: space-between;
 
       &-join,
       &-login {
@@ -75,6 +74,7 @@
 
       &-join {
         color: #C505FA;
+        border: 1px solid #C505FA;
       }
 
       &-login {

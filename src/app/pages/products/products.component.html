@@ -5,33 +5,157 @@
       <input type="text" placeholder="Digite o nome de um produto" />
     </div> -->
   </div>
+
   <div class="c-products__categories">
     <!-- Aqui a gente vai pegar a ideia do mat tab lá do lejour (quando a pessoa for buscar produtos, 
       a gente faz a busca sem uma categoria específica pra poder pesquisar em todas, 
       no layout a gente pode parar de mostrar as categorias enquanto essa busca ocorre ou fica aberta a tab "todos os produtos") -->
-      <mat-tab-group>
-        <mat-tab *ngFor="let category of categories" [label]="category.name">
-          <ng-template matTabContent>
-            <div class="c-products__category">
-              <div class="c-products__category-products">
-                <div class="c-products__category-product" *ngFor="let product of products">
-                  <div class="c-products__category-product-image">
-                    <img src="https://via.placeholder.com/150/C505FA/FFFFFF" alt="Produto" />
-                  </div>
-                  <div class="c-products__category-product-info">
-                    <p class="c-products__category-product-name">{{ product.name }}</p>
-                    <!-- <p class="c-products__category-product-description">{{ product.description }}</p> -->
-                    <p class="c-products__category-product-value">{{ product.price }}</p>
+    <mat-tab-group>
+      <mat-tab *ngFor="let category of categories" [label]="category.name">
+        <ng-template matTabContent>
+          <div class="c-products__category">
+            <div class="c-products__category-products">
+              <div
+                class="c-products__category-product"
+                *ngFor="let product of products"
+              >
+                <div class="c-products__category-product-image">
+                  <img
+                    src="https://via.placeholder.com/150/C505FA/FFFFFF"
+                    alt="Produto"
+                  />
+                </div>
+                <div class="c-products__category-product-info">
+                  <p class="c-products__category-product-name">
+                    {{ product.name }}
+                  </p>
+                  <p class="c-products__category-product-value">
+                    {{ product.price }}
+                  </p>
+                  <div class="c-products__category-product-button">
+                    Adicionar
                   </div>
                 </div>
               </div>
             </div>
-          </ng-template>
-        </mat-tab>
-      </mat-tab-group>
+          </div>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
   </div>
-  
-  <div class="c-products__actions">
-    <div class="c-products__button" (click)="goToPayment()">Finalizar pedido</div>
+
+  <div class="c-products__footer">
+    <div class="c-products__total">
+      <p class="c-products__total-text">Valor total</p>
+      <p class="c-products__total-value">R$ 0,00</p>
+    </div>
+    <div class="c-products__button" (click)="goToPayment()">
+      Finalizar pedido
+    </div>
+  </div>
+
+  <div class="c-products__aside" [@showHide]="hasToShow ? 'show' : 'void'">
+    <div class="c-products__aside-container">
+      <div class="c-products__aside-push-pull">
+        <div class="c-products__aside-push-pull-button" (click)="showOrHide()">
+          <mat-icon
+            class="c-products__aside-push-pull-button-icon"
+            [@showHide]="hasToShow ? 'rotate' : 'void'"
+          >
+            keyboard_arrow_left
+          </mat-icon>
+        </div>
+      </div>
+
+      <div class="c-products__added">
+        <div class="c-products__added-header">
+          <p class="c-products__added-header-title">Carrinho</p>
+        </div>
+        <div class="c-products__added-body">
+          <div
+            class="c-products__added-body-product"
+            *ngFor="let product of products.slice(0, 3)"
+          >
+            <div class="c-products__added-body-product-image">
+              <img
+                src="https://via.placeholder.com/150/C505FA/FFFFFF"
+                alt="Produto"
+              />
+            </div>
+            <div class="c-products__added-body-product-info">
+              <p class="c-products__added-body-product-name">
+                {{ product.name }}
+              </p>
+              <p class="c-products__added-body-product-value">
+                {{ product.price }}
+              </p>
+
+              <div class="c-products__added-body-product-quantity">
+                <div
+                  class="c-products__added-body-product-quantity-button"
+                  (click)="subtract()"
+                >
+                  -
+                </div>
+                <p class="c-products__added-body-product-quantity-value">
+                  {{ quantity }}
+                </p>
+                <div
+                  class="c-products__added-body-product-quantity-button"
+                  (click)="add()"
+                >
+                  +
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="c-products__suggested">
+        <div class="c-products__suggested-header">
+          <p class="c-products__suggested-header-title">Produtos sugeridos</p>
+        </div>
+        <div class="c-products__suggested-body">
+          <div
+            class="c-products__suggested-body-product"
+            *ngFor="let product of products.slice(3, products.length)"
+          >
+            <div class="c-products__suggested-body-product-image">
+              <img
+                src="https://via.placeholder.com/150/C505FA/FFFFFF"
+                alt="Produto"
+              />
+            </div>
+            <div class="c-products__suggested-body-product-info">
+              <p class="c-products__suggested-body-product-name">
+                {{ product.name }}
+              </p>
+              <p class="c-products__suggested-body-product-value">
+                {{ product.price }}
+              </p>
+
+              <div class="c-products__suggested-body-product-quantity">
+                <div
+                  class="c-products__suggested-body-product-quantity-button"
+                  (click)="subtract()"
+                >
+                  -
+                </div>
+                <p class="c-products__suggested-body-product-quantity-value">
+                  {{ quantity }}
+                </p>
+                <div
+                  class="c-products__suggested-body-product-quantity-button"
+                  (click)="add()"
+                >
+                  +
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
