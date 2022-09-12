@@ -59,3 +59,7 @@ mat-dialog-container {
 mat-ink-bar {
 	background-color: #C505FA !important;
 }
+
+.mat-progress-spinner circle, .mat-spinner circle {
+	stroke: #C505FA !important;
+	}

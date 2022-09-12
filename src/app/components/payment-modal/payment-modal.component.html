@@ -98,6 +98,25 @@
           </div>
         </div>
       </div>
+
+      <!-- Third Step - PIX -->
+      <div class="pix" *ngSwitchCase="2">
+        <h1 class="c-payment-modal__content-title">PIX</h1>
+        <p class="c-payment-modal__content-text" *ngIf="!isLoading">
+          Para finalizar a compra, basta escanear o QR Code abaixo:
+        </p>
+        <div class="c-payment-modal__content-pix" *ngIf="!isLoading">
+          <div class="c-payment-modal__content-pix-qrcode">
+            <img src="../../../assets/qrcode-image.png" alt="QR Code" />
+          </div>
+        </div>
+
+        <mat-spinner
+          class="c-payment-modal__content-pix"
+          [diameter]="100"
+          *ngIf="isLoading"
+        ></mat-spinner>
+      </div>
     </ng-container>
   </div>
 </div>

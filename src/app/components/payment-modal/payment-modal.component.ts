@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  DoCheck,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -6,8 +12,10 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
   templateUrl: './payment-modal.component.html',
   styleUrls: ['./payment-modal.component.scss'],
 })
-export class PaymentModalComponent implements OnInit {
+export class PaymentModalComponent implements OnInit, DoCheck {
   public index = 0;
+
+  public isLoading = false;
 
   public products = [
     { name: 'Banana', price: 'R$ 2,00' },
@@ -19,9 +27,24 @@ export class PaymentModalComponent implements OnInit {
   ];
 
   public paymentMethods = [
-    {slug: 'pix', name: 'PIX', description: 'Texto do PIX', image: '../../../assets/pix-image.png' },
-    {slug: 'credit-card', name: 'Cartão de crédito/débito', description: 'Texto do Cartão', image: '../../../assets/credit-card-image.png' },
-    {slug: 'money', name: 'Dinheiro', description: 'Texto do Dinheiro', image: '../../../assets/money-image.png' },
+    {
+      slug: 'pix',
+      name: 'PIX',
+      description: 'Texto do PIX',
+      image: '../../../assets/pix-image.png',
+    },
+    {
+      slug: 'credit-card',
+      name: 'Cartão de crédito/débito',
+      description: 'Texto do Cartão',
+      image: '../../../assets/credit-card-image.png',
+    },
+    {
+      slug: 'money',
+      name: 'Dinheiro',
+      description: 'Texto do Dinheiro',
+      image: '../../../assets/money-image.png',
+    },
   ];
 
   public selectedPaymentMethod: string | undefined;
@@ -29,6 +52,14 @@ export class PaymentModalComponent implements OnInit {
   constructor(private dialogRef: MatDialogRef<PaymentModalComponent>) {}
 
   ngOnInit(): void {}
+
+  ngDoCheck(): void {
+    if (this.index === 2) {
+      setTimeout(() => {
+        this.startLoading();
+      }, 5000);
+    }
+  }
 
   public closeModal(): void {
     this.dialogRef.close();
@@ -38,15 +69,22 @@ export class PaymentModalComponent implements OnInit {
     this.index++;
   }
 
-  public selectPaymentMethod(paymentMethod: string): void {
-    this.selectedPaymentMethod = paymentMethod;
-  }
-
   public previousStep(): void {
     this.index--;
   }
 
+  public selectPaymentMethod(paymentMethod: string): void {
+    this.selectedPaymentMethod = paymentMethod;
+  }
+
   public confirmPaymentMethod(): void {
     console.log(this.selectedPaymentMethod);
+    if (this.selectedPaymentMethod === 'pix') {
+      this.nextStep();
+    }
+  }
+
+  private startLoading(): void {
+    this.isLoading = true;
   }
 }
