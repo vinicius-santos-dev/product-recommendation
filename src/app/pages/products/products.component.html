@@ -44,16 +44,6 @@
     </mat-tab-group>
   </div>
 
-  <div class="c-products__footer">
-    <div class="c-products__total">
-      <p class="c-products__total-text">Valor total</p>
-      <p class="c-products__total-value">R$ 0,00</p>
-    </div>
-    <div class="c-products__button" (click)="openPaymentModal()">
-      Finalizar pedido
-    </div>
-  </div>
-
   <div class="c-products__aside" [@showHide]="hasToShow ? 'show' : 'void'">
     <div class="c-products__aside-container">
       <div class="c-products__aside-push-pull">
@@ -156,6 +146,16 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="c-products__footer">
+    <div class="c-products__total">
+      <p class="c-products__total-text">Valor total</p>
+      <p class="c-products__total-value">R$ 0,00</p>
+    </div>
+    <div class="c-products__button" (click)="openPaymentModal()">
+      Finalizar pedido
     </div>
   </div>
 </div>

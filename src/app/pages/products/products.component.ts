@@ -33,7 +33,6 @@ export class ProductsComponent implements OnInit {
     { name: 'Lanches' },
   ];
 
-  // generate 10 products with name and price
   public products = [
     { name: 'Banana', price: 'R$ 2,00' },
     { name: 'Maçã', price: 'R$ 3,00' },
@@ -47,12 +46,17 @@ export class ProductsComponent implements OnInit {
 
   public quantity = 1;
 
+  public modalConfig = {
+    height: '79vh',
+    width: '80vw',
+  }
+
   constructor(private router: Router, private matDialog: MatDialog) {}
 
   ngOnInit(): void {}
 
   public openPaymentModal(): void {
-    this.matDialog.open(PaymentModalComponent);
+    this.matDialog.open(PaymentModalComponent, this.modalConfig);
   }
 
   public goToPayment(): void {

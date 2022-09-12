@@ -1,0 +1,151 @@
+.c-payment-modal {
+  height: 100%;
+  position: relative;
+
+  &__header {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__close {
+    background: white;
+    padding: 11px 15px;
+    border-radius: 100%;
+    border: 1px solid #C505FA;
+
+    &-icon {
+      color: #C505FA;
+      font-weight: bold;
+      font-size: 18px;
+    }
+  }
+
+  &__content {
+    &-title,
+    &-text {
+      text-align: center;
+    }
+
+    &-title {
+      font-size: 25px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    &-text {
+      font-size: 22px;
+    }
+
+    &-products {
+      margin-top: 24px;
+      height: 700px;
+      overflow-y: scroll;
+    }
+
+    &-product {
+      display: flex;
+      padding: 12px 0;
+      border-bottom: 1px solid #d3d3d3;
+
+      &-image {
+        margin-right: 24px;
+
+        > img {
+          border-radius: 24px;
+        }
+      }
+
+      &-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 22px;
+      }
+
+      &-quantity {
+        display: flex;
+        align-items: center;
+        margin: 6px 0;
+
+        &-button {
+          background-color: #C505FA;
+          color: #fff;
+          padding: 6px;
+          border-radius: 6px;
+          width: 18px;
+          height: 18px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        &-value {
+          margin: 0 12px;
+        }
+      }
+    }
+
+    &-payment-methods {
+      margin-top: 24px;
+    }
+
+    &-payment-method {
+      display: flex;
+      align-items: center;
+      border: 1px solid #fff;
+      border-radius: 12px;
+      padding: 12px;
+
+      &--selected {
+        border: 1px solid #C505FA;
+      }
+
+      &-image {
+        margin-right: 24px;
+
+        > img {
+          width: 120px;
+        }
+      }
+
+      &-name {
+        font-size: 22px;
+        font-weight: bold;
+      }
+
+      &-description {
+        font-size: 20px;
+      }
+    }
+
+    &-buttons {
+      display: flex;
+      position: absolute;
+      bottom: -24px;
+      right: 0;
+      left: 0;
+      padding: 24px 0;
+      justify-content: space-between;
+      background-color: #fff;
+
+      &-cancel,
+      &-confirm {
+        font-size: 22px;
+        font-family: "Quicksand", sans-serif;
+        padding: 12px;
+        border-radius: 12px;
+        font-weight: bold;
+      }
+
+      &-cancel {
+        color: #C505FA;
+        border: 1px solid #C505FA;
+      }
+
+      &-confirm {
+        background-color: #C505FA;
+        color: #fff;
+      }
+    }
+  }
+}

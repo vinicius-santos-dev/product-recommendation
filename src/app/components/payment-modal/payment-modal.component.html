@@ -1,1 +1,103 @@
-<h1>payment-modal works!</h1>
+<div class="c-payment-modal">
+  <div class="c-payment-modal__header">
+    <div class="c-payment-modal__close" (click)="closeModal()">
+      <p class="c-payment-modal__close-icon">X</p>
+    </div>
+  </div>
+
+  <div class="c-payment-modal__content">
+    <ng-container [ngSwitch]="index">
+      <!-- First Step -->
+      <div class="confirmation" *ngSwitchCase="0">
+        <h1 class="c-payment-modal__content-title">Confirmação de pagamento</h1>
+        <p class="c-payment-modal__content-text">
+          Antes de prosseguir, confira os produtos:
+        </p>
+        <div class="c-payment-modal__content-products">
+          <div
+            class="c-payment-modal__content-product"
+            *ngFor="let product of products"
+          >
+            <div class="c-payment-modal__content-product-image">
+              <img
+                src="https://via.placeholder.com/150/C505FA/FFFFFF"
+                alt="Produto"
+              />
+            </div>
+            <div class="c-payment-modal__content-product-info">
+              <p class="c-payment-modal__content-product-name">
+                {{ product.name }}
+              </p>
+              <p class="c-payment-modal__content-product-quantity">
+                Quantidade: 1
+              </p>
+              <p class="c-payment-modal__content-product-value">
+                {{ product.price }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="c-payment-modal__content-buttons">
+          <div
+            class="c-payment-modal__content-buttons-cancel"
+            (click)="closeModal()"
+          >
+            Cancelar
+          </div>
+          <div
+            class="c-payment-modal__content-buttons-confirm"
+            (click)="nextStep()"
+          >
+            Próximo
+          </div>
+        </div>
+      </div>
+
+      <!-- Second Step -->
+      <div class="payment-method" *ngSwitchCase="1">
+        <h1 class="c-payment-modal__content-title">Forma de pagamento</h1>
+        <p class="c-payment-modal__content-text">
+          Selecione a forma de pagamento:
+        </p>
+        <div class="c-payment-modal__content-payment-methods">
+          <div
+            class="c-payment-modal__content-payment-method"
+            [class.c-payment-modal__content-payment-method--selected]="
+              paymentMethod.slug === selectedPaymentMethod
+            "
+            *ngFor="let paymentMethod of paymentMethods"
+            (click)="selectPaymentMethod(paymentMethod.slug)"
+          >
+            <div class="c-payment-modal__content-payment-method-image">
+              <img [src]="paymentMethod.image" alt="Forma de pagamento" />
+            </div>
+            <div class="c-payment-modal__content-payment-method-info">
+              <p class="c-payment-modal__content-payment-method-name">
+                {{ paymentMethod.name }}
+              </p>
+              <p class="c-payment-modal__content-payment-method-description">
+                {{ paymentMethod.description }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="c-payment-modal__content-buttons">
+          <div
+            class="c-payment-modal__content-buttons-cancel"
+            (click)="previousStep()"
+          >
+            Voltar
+          </div>
+          <div
+            class="c-payment-modal__content-buttons-confirm"
+            (click)="confirmPaymentMethod()"
+          >
+            Confirmar
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
