@@ -11,10 +11,10 @@
     background: white;
     padding: 11px 15px;
     border-radius: 100%;
-    border: 1px solid #C505FA;
+    border: 1px solid #c505fa;
 
     &-icon {
-      color: #C505FA;
+      color: #c505fa;
       font-weight: bold;
       font-size: 18px;
     }
@@ -68,7 +68,7 @@
         margin: 6px 0;
 
         &-button {
-          background-color: #C505FA;
+          background-color: #c505fa;
           color: #fff;
           padding: 6px;
           border-radius: 6px;
@@ -97,7 +97,7 @@
       padding: 12px;
 
       &--selected {
-        border: 1px solid #C505FA;
+        border: 1px solid #c505fa;
       }
 
       &-image {
@@ -118,12 +118,29 @@
       }
     }
 
-    &-pix {
+    &-pix,
+    &-credit-card,
+    &-money {
       margin-top: 72px;
 
       // &--loading {
       //   margin-top: 72px;
       // }
+    }
+
+    &-money {
+      &-button {
+        display: flex;
+        position: absolute;
+        bottom: 0;
+        padding: 12px;
+        font-size: 22px;
+        font-family: "Quicksand", sans-serif;
+        border-radius: 12px;
+        font-weight: bold;
+        background-color: #c505fa;
+        color: #fff;
+      }
     }
 
     &-buttons {
@@ -146,21 +163,27 @@
       }
 
       &-cancel {
-        color: #C505FA;
-        border: 1px solid #C505FA;
+        color: #c505fa;
+        border: 1px solid #c505fa;
       }
 
       &-confirm {
-        background-color: #C505FA;
+        background-color: #c505fa;
         color: #fff;
       }
     }
   }
 }
 
-.pix {
+.pix,
+.credit-card,
+.money {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.pix,
+.credit-card {
   padding: 0 100px;
 }

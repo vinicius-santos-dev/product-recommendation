@@ -19,9 +19,7 @@ export class PostPaymentComponent implements OnInit {
   }
 
   public goToNPS(): void {
-    // this.router.navigate(['/nps']);
-    console.log('goToNPS');
-    
+    this.router.navigate(['/nps']);
   }
 
 }

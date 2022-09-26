@@ -58,7 +58,7 @@ export class PaymentModalComponent implements OnInit, DoCheck {
   ngOnInit(): void {}
 
   ngDoCheck(): void {
-    if (this.index === 2) {
+    if (this.index === 2 || this.index === 3) {
       setTimeout(() => {
         this.startLoading();
       }, 3000);
@@ -91,6 +91,19 @@ export class PaymentModalComponent implements OnInit, DoCheck {
     if (this.selectedPaymentMethod === 'pix') {
       this.nextStep();
     }
+
+    if (this.selectedPaymentMethod === 'credit-card') {
+      this.index = 3;
+    }
+
+    if (this.selectedPaymentMethod === 'money') {
+      this.index = 4;
+    }
+  }
+
+  public goToPostPayment(): void {
+    this.dialogRef.close();
+    this.router.navigate(['/post-payment']);
   }
 
   private startLoading(): void {

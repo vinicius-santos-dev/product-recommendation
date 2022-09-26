@@ -117,6 +117,40 @@
           *ngIf="isLoading"
         ></mat-spinner>
       </div>
+
+      <div class="credit-card" *ngSwitchCase="3">
+        <h1 class="c-payment-modal__content-title">Cartão de Crédito/Débito</h1>
+        <p class="c-payment-modal__content-text" *ngIf="!isLoading">
+          Para finalizar a compra, insira o cartão na maquininha e digite sua senha:
+        </p>
+        <div class="c-payment-modal__content-credit-card" *ngIf="!isLoading">
+          <div class="c-payment-modal__content-credit-card-icon">
+            <img src="../../../assets/credit-card-machine-image.png" alt="Máquina de cartão de crédito/débito" />
+          </div>
+        </div>
+
+        <mat-spinner
+          class="c-payment-modal__content-credit-card"
+          [diameter]="100"
+          *ngIf="isLoading"
+        ></mat-spinner>
+      </div>
+
+      <div class="money" *ngSwitchCase="4">
+        <h1 class="c-payment-modal__content-title">Pagamento em dinheiro</h1>
+        <p class="c-payment-modal__content-text">
+          Por conta de ter escolhido pagar com dinheiro, encerre sua sessão, e após receber seus produtos, dirija-se ao caixa para finalizar a compra.
+        </p>
+        <div class="c-payment-modal__content-money">
+          <div class="c-payment-modal__content-money-icon">
+            <img src="../../../assets/money-image.png" alt="Dinheiro" />
+          </div>
+        </div>
+
+        <div class="c-payment-modal__content-money-button" (click)="goToPostPayment()">
+          Ok, entendi
+        </div>
+      </div>
     </ng-container>
   </div>
 </div>
