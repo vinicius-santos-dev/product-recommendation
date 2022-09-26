@@ -20,7 +20,14 @@ const routes: Routes = [
   {
     path: 'post-payment',
     loadChildren: () =>
-      import('./pages/post-payment/post-payment.module').then((m) => m.PostPaymentModule),
+      import('./pages/post-payment/post-payment.module').then(
+        (m) => m.PostPaymentModule
+      ),
+  },
+  {
+    path: 'nps',
+    loadChildren: () =>
+      import('./pages/nps/nps.module').then((m) => m.NpsModule),
   },
 ];
 
