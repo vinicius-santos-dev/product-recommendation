@@ -1,0 +1,24 @@
+<div class="c-post-payment">
+  <h1 class="c-post-payment__title">Pagamento realizado com sucesso!</h1>
+
+  <p class="c-post-payment__text">
+    Gostaria de cadastrar-se para ter acesso a suas últimas compras e
+    recomendação de produtos mais precisa?
+  </p>
+
+  <div class="c-post-payment__form" *ngIf="showForm">
+    <div>FORM AQUI</div>
+  </div>
+
+  <div class="c-post-payment__footer">
+    <div class="c-post-payment__button-finish" (click)="goToNPS()">
+      Não, obrigado
+    </div>
+    <div
+      class="c-post-payment__button-signup"
+      (click)="showForm ? goToNPS() : onShowForm()"
+    >
+      {{ showForm ? "Finalizar" : "Sim, cadastrar" }}
+    </div>
+  </div>
+</div>

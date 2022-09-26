@@ -6,6 +6,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-payment-modal',
@@ -49,7 +50,10 @@ export class PaymentModalComponent implements OnInit, DoCheck {
 
   public selectedPaymentMethod: string | undefined;
 
-  constructor(private dialogRef: MatDialogRef<PaymentModalComponent>) {}
+  constructor(
+    private dialogRef: MatDialogRef<PaymentModalComponent>,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
@@ -57,7 +61,12 @@ export class PaymentModalComponent implements OnInit, DoCheck {
     if (this.index === 2) {
       setTimeout(() => {
         this.startLoading();
-      }, 5000);
+      }, 3000);
+
+      setTimeout(() => {
+        this.dialogRef.close();
+        this.router.navigate(['/post-payment']);
+      }, 6000);
     }
   }
 
