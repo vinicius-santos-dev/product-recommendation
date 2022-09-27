@@ -16,9 +16,11 @@ import { Router } from '@angular/router';
   animations: [
     trigger('openClose', [
       state('open', style({ height: '200px' })),
-      state('fade', style({ opacity: 0 })),
+      state('fade', style({ opacity: 0, display: 'none' })),
+      state('appear', style({ opacity: 1, height: '160px' })),
       transition('void => fade', [animate('0.2s ease-in-out')]),
       transition('void => open', [animate('1s ease-in-out')]),
+      transition('void => appear', [animate('0.2s ease-in-out')]),
     ]),
   ],
 })

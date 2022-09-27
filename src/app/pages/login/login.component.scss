@@ -5,9 +5,9 @@
   background-image: url(../../../assets/login-image.jpg);
   background-size: cover;
   align-items: center;
-  
-  &__layer{
-    background-color: rgba( 0, 0, 0, 0.5 );
+
+  &__layer {
+    background-color: rgba(0, 0, 0, 0.5);
     height: 100%;
     width: 100%;
   }
@@ -58,6 +58,31 @@
   &__form {
     width: 100%;
 
+    &-login {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      align-items: center;
+      opacity: 0;
+      height: 0;
+
+      &-field {
+        width: 40%;
+      }
+
+      &-button {
+        text-align: center;
+        width: 28%;
+        font-size: 22px;
+        font-family: "Quicksand", sans-serif;
+        padding: 24px 42px;
+        border-radius: 18px;
+        font-weight: bold;
+        background-color: #c505fa;
+        color: #fff;
+      }
+    }
+
     &-buttons {
       display: flex;
       width: 100%;
@@ -73,12 +98,12 @@
       }
 
       &-join {
-        color: #C505FA;
-        border: 1px solid #C505FA;
+        color: #c505fa;
+        border: 1px solid #c505fa;
       }
 
       &-login {
-        background-color: #C505FA;
+        background-color: #c505fa;
         color: #fff;
       }
     }
@@ -86,7 +111,7 @@
 }
 
 .purple {
-  color: #C505FA;
+  color: #c505fa;
   font-size: 50px;
   height: auto;
   width: auto;

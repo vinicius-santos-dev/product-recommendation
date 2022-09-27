@@ -8,18 +8,28 @@
   </div>
   <div class="c-login__content" [@openClose]="isOpen ? 'open' : 'void'">
     <form class="c-login__form" [formGroup]="loginForm">
-      <div class="c-login__form-buttons" [@openClose]="isOpen ? 'fade' : 'void'">
-        <div class="c-login__form-buttons-join" (click)="goShop()">Continuar sem login</div>
+      <div
+        class="c-login__form-buttons"
+        [@openClose]="isOpen ? 'fade' : 'void'"
+      >
+        <div class="c-login__form-buttons-join" (click)="goShop()">
+          Continuar sem login
+        </div>
         <div class="c-login__form-buttons-login" (click)="showInput()">
           Já possuo um login
         </div>
       </div>
 
-      <div class="c-login__form-input">
-        <!-- <mat-form-field>
+      <div
+        class="c-login__form-login"
+        [@openClose]="isOpen ? 'appear' : 'void'"
+      >
+        <mat-form-field class="c-login__form-login-field" appearance="outline">
           <mat-label>CPF</mat-label>
           <input matInput formControlName="documentNumber" />
-        </mat-form-field> -->
+        </mat-form-field>
+
+        <div class="c-login__form-login-button" (click)="goShop()">Entrar</div>
       </div>
     </form>
   </div>
