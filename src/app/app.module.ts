@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PaymentModalModule } from './components/payment-modal/payment-modal.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,6 +14,7 @@ import { PaymentModalModule } from './components/payment-modal/payment-modal.mod
     AppRoutingModule,
     BrowserAnimationsModule,
     PaymentModalModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

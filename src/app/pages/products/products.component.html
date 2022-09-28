@@ -10,14 +10,14 @@
     <!-- Aqui a gente vai pegar a ideia do mat tab lá do lejour (quando a pessoa for buscar produtos, 
       a gente faz a busca sem uma categoria específica pra poder pesquisar em todas, 
       no layout a gente pode parar de mostrar as categorias enquanto essa busca ocorre ou fica aberta a tab "todos os produtos") -->
-    <mat-tab-group>
-      <mat-tab *ngFor="let category of categories" [label]="category.name">
+    <mat-tab-group (selectedTabChange)="onSelectTabChange($event)">
+      <mat-tab *ngFor="let category of categories" [label]="category">
         <ng-template matTabContent>
           <div class="c-products__category">
             <div class="c-products__category-products">
               <div
                 class="c-products__category-product"
-                *ngFor="let product of products"
+                *ngFor="let product of productsByCategory[category]"
               >
                 <div class="c-products__category-product-image">
                   <img

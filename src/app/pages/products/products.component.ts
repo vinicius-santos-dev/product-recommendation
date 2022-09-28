@@ -7,8 +7,10 @@ import {
 } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatTabChangeEvent } from '@angular/material/tabs';
 import { Router } from '@angular/router';
 import { PaymentModalComponent } from 'src/app/components/payment-modal/payment-modal.component';
+import { ProductsService } from './products.service';
 
 @Component({
   selector: 'app-products',
@@ -26,21 +28,11 @@ import { PaymentModalComponent } from 'src/app/components/payment-modal/payment-
   ],
 })
 export class ProductsComponent implements OnInit {
-  public categories = [
-    { name: 'Todos' },
-    { name: 'Frutas' },
-    { name: 'Vegetais' },
-    { name: 'Lanches' },
-  ];
+  public categories: string[] = [];
 
-  public products = [
-    { name: 'Banana', price: 'R$ 2,00' },
-    { name: 'Maçã', price: 'R$ 3,00' },
-    { name: 'Pera', price: 'R$ 4,00' },
-    { name: 'Uva', price: 'R$ 5,00' },
-    { name: 'Melancia', price: 'R$ 6,00' },
-    { name: 'Abacaxi', price: 'R$ 7,00' },
-  ];
+  public productsByCategory: any;
+
+  public products: any[] = [];
 
   public hasToShow = false;
 
@@ -49,9 +41,50 @@ export class ProductsComponent implements OnInit {
   public modalConfig = {
     height: '79vh',
     width: '80vw',
-  }
+  };
 
-  constructor(private router: Router, private matDialog: MatDialog) {}
+  public selectedTab: string;
+
+  constructor(
+    private router: Router,
+    private matDialog: MatDialog,
+    private productsService: ProductsService
+  ) {
+    this.productsService.recommendProductsWithoutUser().subscribe(
+      (
+        data: {
+          category: string;
+          id: number;
+          name: string;
+          price: number;
+        }[]
+      ) => {
+        // console.log(data);
+
+        this.categories = data
+          .map((product) => product.category)
+          .filter(
+            (category, index, array) => array.indexOf(category) === index
+          );
+
+        this.selectedTab = this.categories[0];
+
+        this.productsByCategory = data.reduce((acc, product) => {
+          if (!acc.hasOwnProperty(product.category)) {
+            acc[product.category] = [];
+          }
+
+          acc[product.category].push(product);
+
+          return acc;
+        }, {});
+
+        this.products = data;
+
+        console.log(this.categories);
+      }
+    );
+  }
 
   ngOnInit(): void {}
 
@@ -76,5 +109,8 @@ export class ProductsComponent implements OnInit {
       this.quantity--;
     }
   }
-  
+
+  public onSelectTabChange(event: MatTabChangeEvent): void {
+    this.selectedTab = event.tab.textLabel;
+  }
 }
