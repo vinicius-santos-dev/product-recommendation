@@ -36,7 +36,7 @@ export class ProductsComponent implements OnInit {
 
   public hasToShow = false;
 
-  public quantity = 1;
+  public quantity = 0;
 
   public totalValue = 0;
 
@@ -85,7 +85,7 @@ export class ProductsComponent implements OnInit {
 
         this.products = data;
 
-        console.log(this.categories);
+        // console.log(this.products);
       }
     );
   }
@@ -104,13 +104,15 @@ export class ProductsComponent implements OnInit {
     this.hasToShow = !this.hasToShow;
   }
 
-  public add(): void {
-    this.quantity++;
+  public add(product: any): void {
+    product.quantity += 1;
+    this.totalValue = product.price * product.quantity;
   }
 
-  public subtract(): void {
-    if (this.quantity >= 1) {
-      this.quantity--;
+  public subtract(product: any): void {
+    if (product.quantity >= 1) {
+      product.quantity--;
+      this.totalValue = product.price * product.quantity;
     }
   }
 
@@ -119,7 +121,12 @@ export class ProductsComponent implements OnInit {
   }
   
   public addProductToCart(product: any): void {
+    const productQuantity = 1;
+    product = { ...product, quantity: productQuantity };
+
     this.totalValue += product.price;
     this.cartProducts.push(product);
+    console.log('aaaaa', product);
+    
   }
 }

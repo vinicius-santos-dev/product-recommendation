@@ -30,9 +30,12 @@
                     {{ product.name }}
                   </p>
                   <p class="c-products__category-product-value">
-                    {{ product.price / 100 | currency: 'BRL' }}
+                    {{ product.price / 100 | currency: "BRL" }}
                   </p>
-                  <div class="c-products__category-product-button" (click)="addProductToCart(product)">
+                  <div
+                    class="c-products__category-product-button"
+                    (click)="addProductToCart(product)"
+                  >
                     Adicionar
                   </div>
                 </div>
@@ -77,22 +80,22 @@
                 {{ cartProduct.name }}
               </p>
               <p class="c-products__added-body-product-value">
-                {{ cartProduct.price / 100 | currency: 'BRL' }}
+                {{ cartProduct.price / 100 | currency: "BRL" }}
               </p>
 
               <div class="c-products__added-body-product-quantity">
                 <div
                   class="c-products__added-body-product-quantity-button"
-                  (click)="subtract()"
+                  (click)="subtract(cartProduct)"
                 >
                   -
                 </div>
                 <p class="c-products__added-body-product-quantity-value">
-                  {{ quantity }}
+                  {{ cartProduct.quantity }}
                 </p>
                 <div
                   class="c-products__added-body-product-quantity-button"
-                  (click)="add()"
+                  (click)="add(cartProduct)"
                 >
                   +
                 </div>
@@ -122,13 +125,13 @@
                 {{ product.name }}
               </p>
               <p class="c-products__suggested-body-product-value">
-                {{ product.price / 100 | currency: 'BRL' }}
+                {{ product.price / 100 | currency: "BRL" }}
               </p>
 
               <div class="c-products__suggested-body-product-quantity">
                 <div
                   class="c-products__suggested-body-product-quantity-button"
-                  (click)="subtract()"
+                  (click)="subtract(product)"
                 >
                   -
                 </div>
@@ -137,7 +140,7 @@
                 </p>
                 <div
                   class="c-products__suggested-body-product-quantity-button"
-                  (click)="add()"
+                  (click)="add(product)"
                 >
                   +
                 </div>
@@ -152,7 +155,9 @@
   <div class="c-products__footer">
     <div class="c-products__total">
       <p class="c-products__total-text">Valor total</p>
-      <p class="c-products__total-value">{{ totalValue / 100 | currency: 'BRL' }}</p>
+      <p class="c-products__total-value">
+        {{ totalValue / 100 | currency: "BRL" }}
+      </p>
     </div>
     <div class="c-products__button" (click)="openPaymentModal()">
       Finalizar pedido
