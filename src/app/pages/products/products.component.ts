@@ -38,10 +38,14 @@ export class ProductsComponent implements OnInit {
 
   public quantity = 1;
 
+  public totalValue = 0;
+
   public modalConfig = {
     height: '79vh',
     width: '80vw',
   };
+
+  public cartProducts = [];
 
   public selectedTab: string;
 
@@ -112,5 +116,10 @@ export class ProductsComponent implements OnInit {
 
   public onSelectTabChange(event: MatTabChangeEvent): void {
     this.selectedTab = event.tab.textLabel;
+  }
+  
+  public addProductToCart(product: any): void {
+    this.totalValue += product.price;
+    this.cartProducts.push(product);
   }
 }

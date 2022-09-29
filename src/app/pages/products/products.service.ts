@@ -18,33 +18,33 @@ export class ProductsService {
     this.baseUrl = environment.backendUrl;
   }
 
-  // public recommendProductsWithoutUser(): Observable<any> {
-  //   return of(productsWithoutUser);
-  // }
-
   public recommendProductsWithoutUser(): Observable<any> {
-    return this.http.get(this.baseUrl);
+    return of(productsWithoutUser);
   }
 
-  // public recommendProductsWithUser(userId: string): Observable<any> {
-  //   return of (productsWithUser);
+  // public recommendProductsWithoutUser(): Observable<any> {
+  //   return this.http.get(this.baseUrl);
   // }
 
   public recommendProductsWithUser(userId: string): Observable<any> {
-    return this.http.get(`${this.baseUrl}/${userId}`);
+    return of (productsWithUser);
   }
 
-  // public recommendProductsByCategory(
-  //   category: string,
-  //   userId: string
-  // ): Observable<any> {
-  //   return of(productsByCategory);
+  // public recommendProductsWithUser(userId: string): Observable<any> {
+  //   return this.http.get(`${this.baseUrl}/${userId}`);
   // }
 
   public recommendProductsByCategory(
     category: string,
     userId: string
   ): Observable<any> {
-    return this.http.get(`${this.baseUrl}/${userId}/${category}`);
+    return of(productsByCategory);
   }
+
+  // public recommendProductsByCategory(
+  //   category: string,
+  //   userId: string
+  // ): Observable<any> {
+  //   return this.http.get(`${this.baseUrl}/${userId}/${category}`);
+  // }
 }

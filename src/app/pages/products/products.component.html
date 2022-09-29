@@ -30,9 +30,9 @@
                     {{ product.name }}
                   </p>
                   <p class="c-products__category-product-value">
-                    {{ product.price }}
+                    {{ product.price / 100 | currency: 'BRL' }}
                   </p>
-                  <div class="c-products__category-product-button">
+                  <div class="c-products__category-product-button" (click)="addProductToCart(product)">
                     Adicionar
                   </div>
                 </div>
@@ -64,7 +64,7 @@
         <div class="c-products__added-body">
           <div
             class="c-products__added-body-product"
-            *ngFor="let product of products.slice(0, 3)"
+            *ngFor="let cartProduct of cartProducts"
           >
             <div class="c-products__added-body-product-image">
               <img
@@ -74,10 +74,10 @@
             </div>
             <div class="c-products__added-body-product-info">
               <p class="c-products__added-body-product-name">
-                {{ product.name }}
+                {{ cartProduct.name }}
               </p>
               <p class="c-products__added-body-product-value">
-                {{ product.price }}
+                {{ cartProduct.price / 100 | currency: 'BRL' }}
               </p>
 
               <div class="c-products__added-body-product-quantity">
@@ -122,7 +122,7 @@
                 {{ product.name }}
               </p>
               <p class="c-products__suggested-body-product-value">
-                {{ product.price }}
+                {{ product.price / 100 | currency: 'BRL' }}
               </p>
 
               <div class="c-products__suggested-body-product-quantity">
@@ -152,7 +152,7 @@
   <div class="c-products__footer">
     <div class="c-products__total">
       <p class="c-products__total-text">Valor total</p>
-      <p class="c-products__total-value">R$ 0,00</p>
+      <p class="c-products__total-value">{{ totalValue / 100 | currency: 'BRL' }}</p>
     </div>
     <div class="c-products__button" (click)="openPaymentModal()">
       Finalizar pedido
