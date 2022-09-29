@@ -49,6 +49,8 @@ export class ProductsComponent implements OnInit {
 
   public selectedTab: string;
 
+  public isLoading = false;
+
   constructor(
     private router: Router,
     private matDialog: MatDialog,
@@ -64,6 +66,7 @@ export class ProductsComponent implements OnInit {
         }[]
       ) => {
         // console.log(data);
+        this.isLoading = true;
 
         this.categories = data
           .map((product) => product.category)
@@ -85,6 +88,7 @@ export class ProductsComponent implements OnInit {
 
         this.products = data;
 
+        this.isLoading = false;
         // console.log(this.products);
       }
     );

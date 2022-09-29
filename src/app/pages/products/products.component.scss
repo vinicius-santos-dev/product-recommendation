@@ -13,6 +13,9 @@
 
   &__categories {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     > mat-tab-group {
       ::ng-deep .mat-tab-label-content {

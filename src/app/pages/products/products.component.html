@@ -6,11 +6,18 @@
     </div> -->
   </div>
 
-  <div class="c-products__categories">
+  <div class="c-products__categories" >
     <!-- Aqui a gente vai pegar a ideia do mat tab lá do lejour (quando a pessoa for buscar produtos, 
       a gente faz a busca sem uma categoria específica pra poder pesquisar em todas, 
       no layout a gente pode parar de mostrar as categorias enquanto essa busca ocorre ou fica aberta a tab "todos os produtos") -->
-    <mat-tab-group (selectedTabChange)="onSelectTabChange($event)">
+
+      <mat-spinner
+          class="c-products__loading"
+          [diameter]="100"
+          *ngIf="isLoading"
+        ></mat-spinner>
+
+    <mat-tab-group (selectedTabChange)="onSelectTabChange($event)" *ngIf="!isLoading">
       <mat-tab *ngFor="let category of categories" [label]="category">
         <ng-template matTabContent>
           <div class="c-products__category">

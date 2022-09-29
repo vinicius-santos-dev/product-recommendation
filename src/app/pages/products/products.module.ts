@@ -5,6 +5,7 @@ import { ProductsRoutingModule } from './products-routing.module';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [ProductsComponent],
@@ -14,6 +15,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatTabsModule,
     MatIconModule,
     MatDialogModule,
+    MatProgressSpinnerModule
   ],
   providers: []
 })
