@@ -103,6 +103,7 @@ export class PaymentModalComponent implements OnInit, DoCheck {
         name: product.name,
         price: product.price,
         categoryId: product.category.slug,
+        product: {slug: product.slug}
       }
 
       for (let i = 0; i < product.quantity; i++) {

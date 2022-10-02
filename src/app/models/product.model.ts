@@ -26,4 +26,5 @@ export interface BoughtProductParams {
   name: string;
   price: number;
   categoryId: string;
+  product: { slug: string }
 }

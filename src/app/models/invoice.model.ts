@@ -1,5 +1,5 @@
 import {BaseModel} from "./base.model";
-import {BoughtProduct} from "./product.model";
+import {BoughtProduct, BoughtProductParams} from "./product.model";
 import {User} from "./user.model";
 
 export enum PaymentMethod {
@@ -23,5 +23,5 @@ export interface InvoiceParams {
   paymentMethod: PaymentMethod;
   rating?: number;
   buyer?: number;
-  products?: Partial<BoughtProduct>[];
+  products?: BoughtProductParams[];
 }

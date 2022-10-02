@@ -15,11 +15,11 @@ export class RecommendationService {
   }
 
   public getGeneralRecommendations(): Observable<Product[]> {
-    return this.http.post(`${this.baseUrl}/general`, {}) as Observable<Product[]>;
+    return this.http.get(`${this.baseUrl}/general`, {}) as Observable<Product[]>;
   }
 
   public getRecommendationByUser(documentNumber: string): Observable<Product[]> {
-    return this.http.post(`${this.baseUrl}/byUser/${documentNumber}`, {}) as Observable<Product[]>;
+    return this.http.get(`${this.baseUrl}/byUser/${documentNumber}`, {}) as Observable<Product[]>;
   }
 
   public recommendProductsByCategory(
