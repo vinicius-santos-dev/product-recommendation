@@ -12,10 +12,10 @@
         class="c-login__form-buttons"
         [@openClose]="isOpen ? 'fade' : 'void'"
       >
-        <div class="c-login__form-buttons-join" (click)="goShop()">
+        <div class="c-login__form-buttons-join" (click)="onGoShop()">
           Continuar sem login
         </div>
-        <div class="c-login__form-buttons-login" (click)="showInput()">
+        <div class="c-login__form-buttons-login" (click)="onShowInput()">
           Já possuo um login
         </div>
       </div>
@@ -29,7 +29,7 @@
           <input matInput formControlName="documentNumber" />
         </mat-form-field>
 
-        <div class="c-login__form-login-button" (click)="goShop()">Entrar</div>
+        <div class="c-login__form-login-button" (click)="onGoShop()">Entrar</div>
       </div>
     </form>
   </div>

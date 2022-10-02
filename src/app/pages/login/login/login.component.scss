@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-image: url(../../../assets/login-image.jpg);
+  background-image: url(../../../../assets/login-image.jpg);
   background-size: cover;
   align-items: center;
 
@@ -90,6 +90,7 @@
 
       &-join,
       &-login {
+        cursor: pointer;
         font-size: 25px;
         font-family: "Quicksand", sans-serif;
         padding: 24px 42px;

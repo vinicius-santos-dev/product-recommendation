@@ -6,29 +6,29 @@
     </div> -->
   </div>
 
-  <div class="c-products__categories" >
-    <!-- Aqui a gente vai pegar a ideia do mat tab lá do lejour (quando a pessoa for buscar produtos, 
-      a gente faz a busca sem uma categoria específica pra poder pesquisar em todas, 
+  <div class="c-products__categories">
+    <!-- Aqui a gente vai pegar a ideia do mat tab lá do lejour (quando a pessoa for buscar produtos,
+      a gente faz a busca sem uma categoria específica pra poder pesquisar em todas,
       no layout a gente pode parar de mostrar as categorias enquanto essa busca ocorre ou fica aberta a tab "todos os produtos") -->
 
-      <mat-spinner
-          class="c-products__loading"
-          [diameter]="100"
-          *ngIf="isLoading"
-        ></mat-spinner>
+    <mat-spinner
+      class="c-products__loading"
+      [diameter]="100"
+      *ngIf="isLoading"
+    ></mat-spinner>
 
     <mat-tab-group (selectedTabChange)="onSelectTabChange($event)" *ngIf="!isLoading">
-      <mat-tab *ngFor="let category of categories" [label]="category">
+      <mat-tab *ngFor="let category of categories" [label]="category.name">
         <ng-template matTabContent>
           <div class="c-products__category">
             <div class="c-products__category-products">
               <div
                 class="c-products__category-product"
-                *ngFor="let product of productsByCategory[category]"
+                *ngFor="let product of productsByCategory[category.slug]"
               >
                 <div class="c-products__category-product-image">
                   <img
-                    src="https://via.placeholder.com/150/C505FA/FFFFFF"
+                    [src]="product.image"
                     alt="Produto"
                   />
                 </div>
@@ -37,11 +37,11 @@
                     {{ product.name }}
                   </p>
                   <p class="c-products__category-product-value">
-                    {{ product.price / 100 | currency: "BRL" }}
+                    {{ product.price | currency: "BRL" }}
                   </p>
                   <div
                     class="c-products__category-product-button"
-                    (click)="addProductToCart(product)"
+                    (click)="onAddProductToCart(product)"
                   >
                     Adicionar
                   </div>
@@ -78,7 +78,7 @@
           >
             <div class="c-products__added-body-product-image">
               <img
-                src="https://via.placeholder.com/150/C505FA/FFFFFF"
+                [src]="cartProduct.image"
                 alt="Produto"
               />
             </div>
@@ -87,13 +87,13 @@
                 {{ cartProduct.name }}
               </p>
               <p class="c-products__added-body-product-value">
-                {{ cartProduct.price / 100 | currency: "BRL" }}
+                {{ cartProduct.price | currency: "BRL" }}
               </p>
 
               <div class="c-products__added-body-product-quantity">
                 <div
                   class="c-products__added-body-product-quantity-button"
-                  (click)="subtract(cartProduct)"
+                  (click)="onRemoveProduct(cartProduct)"
                 >
                   -
                 </div>
@@ -123,7 +123,7 @@
           >
             <div class="c-products__suggested-body-product-image">
               <img
-                src="https://via.placeholder.com/150/C505FA/FFFFFF"
+                [src]="product.image"
                 alt="Produto"
               />
             </div>
@@ -132,13 +132,15 @@
                 {{ product.name }}
               </p>
               <p class="c-products__suggested-body-product-value">
-                {{ product.price / 100 | currency: "BRL" }}
+                {{ product.price | currency: "BRL" }}
               </p>
+
+              <!-- Aqui tem que virar um botão de "adicionar" -->
 
               <div class="c-products__suggested-body-product-quantity">
                 <div
                   class="c-products__suggested-body-product-quantity-button"
-                  (click)="subtract(product)"
+                  (click)="onRemoveProduct(product)"
                 >
                   -
                 </div>
@@ -163,7 +165,7 @@
     <div class="c-products__total">
       <p class="c-products__total-text">Valor total</p>
       <p class="c-products__total-value">
-        {{ totalValue / 100 | currency: "BRL" }}
+        {{ total | currency: "BRL" }}
       </p>
     </div>
     <div class="c-products__button" (click)="openPaymentModal()">

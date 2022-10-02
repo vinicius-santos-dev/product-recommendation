@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PostPaymentComponent } from './post-payment.component';
+import { PostPaymentComponent } from './post-payment/post-payment.component';
 
 const routes: Routes = [
   {

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { NpsComponent } from './nps.component';
+import { NpsComponent } from './nps/nps.component';
 
 const routes: Routes = [
   {

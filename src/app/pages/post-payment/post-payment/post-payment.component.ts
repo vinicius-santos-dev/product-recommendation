@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {UserQuery} from "../../../stores/user/user.query";
 
 @Component({
   selector: 'app-payment',
@@ -9,7 +10,10 @@ import { Router } from '@angular/router';
 export class PostPaymentComponent implements OnInit {
   public showForm = false;
 
-  constructor(private router: Router) { }
+  public user = this.userQuery.user;
+
+  constructor(private router: Router, private userQuery: UserQuery) {
+  }
 
   ngOnInit(): void {
   }
