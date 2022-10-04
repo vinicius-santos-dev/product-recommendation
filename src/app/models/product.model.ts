@@ -2,7 +2,7 @@ import {Category} from "./category.model";
 import {BaseModel, BaseDateModel} from "./base.model";
 import {Invoice} from "./invoice.model";
 
-export interface Product extends BaseDateModel {
+export interface Product extends BaseModel {
   name: string;
   slug: string;
   price: number;
@@ -26,5 +26,5 @@ export interface BoughtProductParams {
   name: string;
   price: number;
   categoryId: string;
-  product: { slug: string }
+  product: { id: number }
 }

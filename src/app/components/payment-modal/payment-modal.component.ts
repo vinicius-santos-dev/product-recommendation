@@ -103,7 +103,7 @@ export class PaymentModalComponent implements OnInit, DoCheck {
         name: product.name,
         price: product.price,
         categoryId: product.category.slug,
-        product: {slug: product.slug}
+        product: {id: product.id}
       }
 
       for (let i = 0; i < product.quantity; i++) {
@@ -113,7 +113,7 @@ export class PaymentModalComponent implements OnInit, DoCheck {
 
     this.invoiceService.createInvoice({
       paymentMethod: this.selectedPaymentMethod,
-      buyer: this.user.id,
+      buyer: this.user?.id,
       total: this.cartQuery.total,
       products: productsParams
     }).pipe(take(1)).subscribe();
